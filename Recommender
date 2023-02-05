@@ -1,0 +1,489 @@
+import java.util.Scanner;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GameRecommenderGUI {
+
+
+	static int counter = 0;
+
+	
+	public static void main(String[] args) {
+		
+		//QUESTION 1
+		
+		JLabel gsTitle = new JLabel();
+		gsTitle.setText("Please Choose a Console!");
+		gsTitle.setFont(new Font("Ariel",Font.PLAIN,40));
+		gsTitle.setForeground(Color.white);
+		
+		JPanel tPanel = new JPanel();
+		tPanel.setBackground(Color.black);
+		tPanel.setBounds(500,0,830,100);
+	
+		JFrame frame1 = new JFrame();
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame1.setLayout(null);
+		frame1.getContentPane().setBackground(Color.black);
+		frame1.setSize(1900,1000);
+		frame1.setResizable(false);
+		frame1.setVisible(true);
+		frame1.add(tPanel);
+		tPanel.add(gsTitle);
+		
+		
+		//QUESTION 2
+			
+		JLabel ques2 = new JLabel();
+		ques2.setText("Choose Your Budget!");
+		ques2.setFont(new Font("Ariel",Font.PLAIN,40));
+		ques2.setForeground(Color.white);
+		
+		JPanel tPanel2 = new JPanel();
+		tPanel2.setBackground(Color.black);
+		tPanel2.setBounds(500,0,830,100);
+		
+		JFrame frame2 = new JFrame();
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame2.setLayout(null);
+		frame2.getContentPane().setBackground(Color.black);
+		frame2.setSize(1900,1000);
+		frame2.setResizable(false);
+		frame2.setVisible(false);
+		frame2.add(tPanel2);
+		tPanel2.add(ques2);
+		
+		//QUESTION 3
+		
+		JLabel ques3 = new JLabel();
+		ques3.setText("What Genre Of Games Are You Looking For?");
+		ques3.setFont(new Font("Ariel",Font.PLAIN,40));
+		ques3.setForeground(Color.white);
+		
+		JPanel tPanel3 = new JPanel();
+		tPanel3.setBackground(Color.black);
+		tPanel3.setBounds(500,0,830,100);
+		
+		JFrame frame3 = new JFrame();
+		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.setLayout(null);
+		frame3.getContentPane().setBackground(Color.black);
+		frame3.setSize(1900,1000);
+		frame3.setResizable(false);
+		frame3.setVisible(false);
+		frame3.add(tPanel3);
+		tPanel3.add(ques3);	
+		
+		//BUTTONS
+		
+		JButton ns = new JButton("NINTENDO SWITCH");
+		ns.setBounds(500,500,200,200);
+		ns.setFocusable(false);
+		ns.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+					counter = counter+100;
+					frame1.setVisible(false);
+					frame2.setVisible(true);
+		}
+			
+		});
+		
+		JButton ps = new JButton("PLAYSTATION 4");
+		ps.setBounds(800,500,200,200);
+		ps.setFocusable(false);
+		ps.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+200;
+				frame1.setVisible(false);
+				frame2.setVisible(true);
+			}
+		});
+		
+		JButton xbox = new JButton("XBOX ONE");
+		xbox.setBounds(1100,500,200,200);
+		xbox.setFocusable(false);
+		xbox.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+300;
+				frame1.setVisible(false);
+				frame2.setVisible(true);
+			}
+		});
+		
+		frame1.add(ns);
+		frame1.add(ps);
+		frame1.add(xbox);
+		
+		JButton b1 = new JButton("$15-$25");
+		b1.setBounds(500,300,200,200);
+		b1.setFocusable(false);
+		b1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+20;
+				frame2.setVisible(false);
+				frame3.setVisible(true);
+			}
+		});
+		
+		JButton b2 = new JButton("$35-$50");
+		b2.setBounds(800,300,200,200);
+		b2.setFocusable(false);
+		b2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+40;
+				frame2.setVisible(false);
+				frame3.setVisible(true);
+			}
+		});
+		
+		JButton b3 = new JButton("$60+");
+		b3.setBounds(1100,300,200,200);
+		b3.setFocusable(false);
+		b3.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+60;
+				frame2.setVisible(false);
+				frame3.setVisible(true);
+			}
+		});
+		
+		frame2.add(b1);
+		frame2.add(b2);
+		frame2.add(b3);
+		
+		JButton g1 = new JButton("Adventure");
+		g1.setBounds(500,300,200,200);
+		g1.setFocusable(false);
+		g1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+2;
+				String game = "";
+				frame3.setVisible(false);
+				game = gameList(counter);
+				System.out.println("You may be interested in...\n------------------------------------------\n "+game);
+				System.out.println("\n This game costs $"+costCalc(game));
+			}
+		});
+		
+		JButton g2 = new JButton("Action");
+		g2.setBounds(800,300,200,200);
+		g2.setFocusable(false);
+		g2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+4;
+				String game = "";
+				frame3.setVisible(false);
+				game = gameList(counter);
+				System.out.println("You may be interested in...\n------------------------------------------\n "+game);
+				System.out.println("\n This game costs $"+costCalc(game));
+			}
+		});
+		
+		JButton g3 = new JButton("Racing");
+		g3.setBounds(1100,300,200,200);
+		g3.setFocusable(false);
+		g3.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+6;
+				String game = "";
+				frame3.setVisible(false);
+				game = gameList(counter);
+				System.out.println("You may be interested in...\n------------------------------------------\n "+game);
+				System.out.println("\n This game costs $"+costCalc(game));
+				
+			}
+		});
+		
+		JButton g4 = new JButton("Horror");
+		g4.setBounds(650,550,200,200);
+		g4.setFocusable(false);
+		g4.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+8;
+				String game = "";
+				frame3.setVisible(false);
+				game = gameList(counter);
+				System.out.println("You may be interested in...\n------------------------------------------\n "+game);
+				System.out.println("\n This game costs $"+costCalc(game));
+			}
+		});
+		
+		JButton g5 = new JButton("Sports");
+		g5.setBounds(950,550,200,200);
+		g5.setFocusable(false);
+		g5.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter=counter+10;
+				String game = "";
+				frame3.setVisible(false);
+				game = gameList(counter);
+				System.out.println("You may be interested in...\n------------------------------------------\n "+game);
+				System.out.println("\n This game costs $"+costCalc(game));
+			}
+		});
+		
+		frame3.add(g1);
+		frame3.add(g2);
+		frame3.add(g3);
+		frame3.add(g4);
+		frame3.add(g5);
+		
+			
+	}
+	
+	public static String gameList (int Counter) {//This method takes in the value of counter as a parameter and uses that value to find a game
+		String game = "none";//Initializes the string game to be none
+		int num = 0;//Initializes an int value to be 0
+		if(Counter>100&&Counter<200) {//If the counter is between 100-200 the program will have access to all SWITCH GAMES
+				String[] swGameList = {"Ocean's Heart","Webbed","Kraken Academy","KungFu KickBall", "Vagante","Pure Chase 80s", "Car Driving Simulator",
+						"Five Nights At Freddys 1-5","Super Chicken Catchers","Maglam Lord", "Dark Souls Remastered", "Wolfenstien II","Kingdom Hearts HD","Xenoblade Chronicles 2",
+						"NASCAR HEAT","Fast & Furious: Spy Racers","Five Nights at Freddy's: The Core Collection","Five Nights at Freddy's: Help Wanted", "Hello Neighbor",
+						"WWE 2K Battlegrounds", "Tom Hawk's Pro Skater 1+2", "FIFA 22 Legacy Edition","Luigi's Mansion 3","Mario + Rabbids Kingdom Battle","Pokemon Let's Go Pikachu and Eevee",
+						"ARMS", "Splatoon 2","Super Mario Odyssey","Super Mario Maker","Super Mario 3D World + Bowser's Fury", "Mario Kart 8 Deluxe", "Crash: Team Racing",
+						"Mario Golf: Super Rush", "Mario Tennis Aces","NBA 2K22"};//ARRAY OF SWITCH GAMES
+			if(Counter==122) { //If the counter is a certain number, num is set to a random between the amount of games with the same genre and price tag 
+				num = (int)(Math.random()*3+0);//Ex; In this case, 122 means an ADVENTURE SWITCH GAME that is between $15-$25. The first three games in the array
+				}//are part of the same category of price and genre. Because of that, the value of num will be either 0, 1, or 2 
+			else if(Counter==124) {	
+				num = (int)(Math.random()*2+3);//num will equal 3 or 4
+			}
+			else if(Counter==126) {
+				num = (int)(Math.random()*2+5);//num will equal 5 or 6
+			}
+			else if(Counter==128) {
+				num = 7;
+			}
+			else if(Counter==130) {
+				num = 8;
+			}
+			else if(Counter==142) {
+				num = (int)(Math.random()*3+9);//num will equal 9, 10 or 11
+			}
+			else if(Counter==144) {
+				num = (int)(Math.random()*2+12);//num will equal 12 or 13
+			}
+			else if(Counter==146) {
+				num = (int)(Math.random()*2+14);//num will equal 14 or 15
+			}
+			else if(Counter==148) {
+				num = (int)(Math.random()*3+16);//num will equal 16, 17 or 18
+			}
+			else if(Counter==150) {
+				num = (int)(Math.random()*3+19);//num will equal 19, 21 or 21
+			}
+			else if(Counter==162) {
+				num = (int)(Math.random()*3+22);//num will equal 22, 23 or 24
+			}
+			else if(Counter==164) {
+				num = (int)(Math.random()*5+25);//num will equal 25, 26, 27, 28 or 29
+			}
+			else if(Counter == 166) {
+				num = (int)(Math.random()*2+30);//num will equal 30 or 31
+			}
+			else if(Counter == 168) {	
+				num = (int)(Math.random()*3+16);//num will equal 16, 17 or 18
+			}
+			else if(Counter == 170) {
+				num = (int)(Math.random()*2+32);//num will equal 32 or 33
+			}
+			game = swGameList[num];//The string (game) will become a string in the array at the index of whatever the value of num is
+			//Ex; if num is 2 the value of game will become "Kraken Academy" which is a string in the array at the 2nd index.
+		}
+		
+		if(Counter>200&&Counter<300) {//If the counter is between 200-300 the program will have access to all XBOX GAMES 
+			String[] xbGameList = {"The Lego Movie Videogame", "Terreria","Demoniaca","Far Cry 3","Need For Speed Rivals",
+					"Doki Doki Literature Club Plus", "Creepy Tale","Super Blood Hockey","Super Slam Dunk Touchdown",
+					"Minecraft Starter Collection", "LEGO Marvel Super Hereos 2","Mortal Kombat X","Call of Duty Black Ops",
+					"CarX Drift Racing Online", "Alien Isolation", "Knockout City", "Maximum Football 2020","Far Cry 6", "Assassin's Creed Valhalla",
+					"Battlefield 2042", "Call Of Duty: Vanguard", "Forza Horizon 5","The Medium", "NBA 2K22", "FIFA 22", "NHL 22"};//ARRAY OF XBOX GAMES 
+			
+			if(Counter==222) {
+				num = (int)(Math.random()*2+0);
+			}
+			else if(Counter==224) {
+				num = (int)(Math.random()*2+2);
+			}
+			else if(Counter==226) {
+				num = 4;
+			}
+			else if(Counter==228) {
+				num = (int)(Math.random()*2+5);
+			}
+			else if(Counter==230) {
+				num = (int)(Math.random()*2+7);	
+			}
+			else if(Counter==242) {
+				num = (int)(Math.random()*2+9);
+			}
+			else if(Counter==244) {
+				num = (int)(Math.random()*2+11);
+			}
+			else if(Counter==246) {
+				num = 13;
+			}
+			else if(Counter==248) {
+				num = 14;
+			}
+			else if(Counter==250){
+				num = (int)(Math.random()*2+15);
+			}
+			else if(Counter==262) {
+				num = (int)(Math.random()*2+17);
+			}
+			else if(Counter==264) {
+				num = (int)(Math.random()*2+19);
+			}
+			else if(Counter==266) {
+				num = 21;
+			}
+			else if(Counter==268) {
+				num = 22;
+			}
+			else {
+				num = (int)(Math.random()*3+23);
+			}
+		
+			game = xbGameList[num];//The string (game) will become a string in the array at the index of whatever the value of num is
+		}
+		
+		if(Counter>300&&Counter<400) {//If the counter is between 300-400 the program will have access to all PLAYSTATION GAMES
+			String[] psGamesList = {"Fairune Collection", "One Last Memory","Boomerang Fu", "Bloodshore", "Mini Madness", "NASCAR Heat 4", "Limbo",
+					"Guts 'N Goals", "Grow: Song of the Evertree", "The Long Dark", "Gearshifters", "The Dark Pictures Anthology", "Blair Witch",
+					"WWE 2K Battlegrounds","Watch Dogs®: Legion","Sackboy: A Big Adventure", "Marvel's Spider-Man: Miles Morales", "Call of Duty: Vanguard",
+					"Need For Speed Heat", "DIRT 5", "Five Nights at Freddy's Security Breach", "Resident Evil Village","Cricket 22","NHL 22","FIFA 22","NBA 2K22"};
+					//ARRAY OF PLAYSTATION GAMES
+			if(Counter==322) {
+				num = (int)(Math.random()*2+0);	
+			}
+			else if (Counter==324) {
+				num = (int)(Math.random()*2+2);
+			}
+			else if (Counter==326) {
+				num = (int)(Math.random()*2+4);
+			}
+			else if (Counter==328) {
+				num = 6;
+			}
+			else if (Counter==330) {
+				num = 7;
+			}
+			else if (Counter==342) {
+				num = 8;
+			}
+			else if (Counter==344) {
+				num = 9;
+			}
+			else if (Counter==346) {
+				num = 10;
+			}
+			else if (Counter==348) {
+				num = (int)(Math.random()*2+11);
+			}
+			else if (Counter==350) {
+				num = 13;
+			}
+			else if (Counter==362) {
+				num = (int)(Math.random()*2+14);
+			}
+			else if (Counter==364) {
+				num = (int)(Math.random()*2+16);
+			}
+			else if (Counter==366) {
+				num = (int)(Math.random()*2+18);
+			}
+			else if (Counter==368) {
+				num = (int)(Math.random()*2+20);
+			}
+			else if (Counter==370) {
+				num = (int)(Math.random()*4+22);
+			}
+			
+			game = psGamesList[num];//The string (game) will become a string in the array at the index of whatever the value of num is
+		
+		}
+		
+		return (game);//Returns the value of game
+	}
+	public static double costCalc(String Game) {//This method takes the value of (Game) as a parameter and uses it to find the cost of the game
+		double cost = 0.00;//Initializes a double value (cost) to be 0
+		
+		if(Game == "Five Nights At Freddys 1-5"||Game == "Creepy Tale") {//If the value of (Game) equals any one of the games listed, the variable (cost) will equal a price. The games are organized by their prices
+			cost = 7.99;
+		}
+		
+		if(Game=="Ocean's Heart"||Game==" Pure Chase 80s"||Game=="Vagante"||Game=="Fairune Collection"||Game=="Mini Madness"||Game=="Limbo"||
+		   Game=="") {
+			cost = 14.99;
+		}
+		
+		if(Game=="Webbed"||Game=="Kraken Academy"||Game=="Super Chicken Catchers") {
+			cost = 17.99;
+		}
+		
+		if(Game=="KungFu KickBall"||Game=="Car Driving Simulator"||Game=="The Lego Movie Videogame"||Game=="Terreria"||Game=="Demoniaca"||Game=="Far Cry 3"||
+		   Game=="Need For Speed Rivals"||Game=="Doki Doki Literature Club Plus"||Game=="Super Blood Hockey"||Game=="Super Slam Dunk Touchdown"||
+		   Game=="One Last Memory"||Game=="Boomerang Fu"||Game=="Bloodshore"||Game=="NASCAR Heat 4"||Game=="Guts 'N Goals") {
+			cost = 19.99;
+		}
+		
+		if(Game=="LEGO Marvel Super Hereos 2"||Game=="Mortal Kombat X"||Game=="Call of Duty Black Ops"||Game=="Knockout City") {
+			cost = 29.99;
+		}
+		
+		if(Game=="Maglam Lord"||Game=="Dark Souls Remastered"||Game=="Wolfenstien II"||Game=="Kingdom Hearts HD"||Game=="Xenoblade Chronicles 2"||
+		   Game=="NASCAR HEAT"||Game=="Fast & Furious: Spy Racers"||Game=="Five Nights at Freddy's: The Core Collection"||Game=="Five Nights at Freddy's: Help Wanted"||
+		   Game=="Hello Neighbor"||Game=="WWE 2K Battlegrounds"||Game=="Tom Hawk's Pro Skater 1+2"||Game=="FIFA 22 Legacy Edition"||
+		   Game=="Minecraft Starter Collection"||Game=="CarX Drift Racing Online"||Game=="Alien: Isolation"||Game=="Maximum Football 2020"||
+		   Game=="Grow: Song of the Evertree"||Game=="Gearshifters"||Game=="The Dark Pictures Anthology"||Game=="Blair Witch") {
+			cost = 39.99;
+		}
+		
+		if(Game=="The Long Dark"||Game=="WWE 2K Battlegrounds") {
+			cost = 46.99;
+		}
+		
+		if(Game=="Five Nights at Freddy's Security Breach") {
+			cost = 53.49;
+		}
+		
+		if(Game=="The Medium"||Game=="Marvel's Spider-Man: Miles Morales"||Game=="Cricket 22") {
+			cost = 64.99;
+		}
+		
+		if(Game=="Luigi's Mansion 3"||Game=="Mario + Rabbids Kingdom Battle"||Game=="Pokemon Let's Go Pikachu and Eevee"||Game=="Arms"||
+		   Game=="Splatoon 2"||Game=="Super Mario Odyssey"||Game=="Super Mario Maker"||Game=="Super Mario 3D World + Bowser's Fury"||
+		   Game=="Mario Kart 8 Deluxe"||Game=="Crash: Team Racing"||Game=="Mario Golf: Super Rush"||Game=="Mario Tennis Aces"||Game=="NBA 2K22"||
+		   Game=="Far Cry 6"||Game=="Assassin's Creed Valhalla"||Game=="Battlefield 2042"||Game=="Call of Duty: Vanguard"||Game=="Forza Horizon 5"||
+		   Game=="NBA 2K22"||Game=="FIFA 22"||Game=="NHL 22"||Game=="Watch Dogs®: Legion"||Game=="Sackboy: A Big Adventure"||Game=="DIRT 5"||
+		   Game=="Resident Evil Village"||Game=="Need For Speed Heat") {
+			cost = 79.99;
+		}
+		
+		double totalCost = cost*1.13;//Applies tax onto the cost
+		double rCost = (double)(Math.round(totalCost*100.00)/100.0);//Rounds the total cost 
+		return rCost;//Returns the total cost back to the main method
+	}
+	
+}
